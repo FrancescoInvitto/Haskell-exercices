@@ -15,6 +15,14 @@ Follow these steps:
   ```console
   ghci
   ```
+  4. compile you code
+  ```console
+  ghc -o filename filename.hs
+  ```
+  5. run the executable
+  ```console
+  ./filename
+  ```
 
 ## Using Replit
 Follow these steps:
