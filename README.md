@@ -7,8 +7,10 @@ In order to execute the Haskell programs you can install Haskell on your machine
 ## Install Haskell (Linux system)
 Follow these steps:
   1. set up Haskell environment: go to the official website and select your distribution, you will get a page showing the command to install Haskell
-  2. open your terminal and write the command (example with Ubuntu) ```console sudo apt-get install haskell-platform```
-  3. launch the ghci command; once you get the Prelude prompt you are ready to use Haskell ```console ghci```
+  2. open your terminal and write the command (example with Ubuntu)
+  ```console sudo apt-get install haskell-platform```
+  3. launch the ghci command; once you get the Prelude prompt you are ready to use Haskell
+  ```console ghci```
 
 ## Using Replit
 Follow these steps:
