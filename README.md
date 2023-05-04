@@ -2,7 +2,13 @@
 A collection of Haskell exercises developed during the "Paradigmi e linguaggi per l'analisi dei dati" (Paradigms and languages for data analysis) course of master degree at University of Parma.
 
 # How to execute Haskell code
-In order to execute the Haskell programs you can install Haskell on your machine (see: [How to install Haskell][https://wiki.haskell.org/Haskell_in_5_steps#:~:text=If%20you%20have%20installed%20the,WinGHCi%20in%20the%20Start%20menu.&text=And%20you%20are%20presented%20with,now%20attentively%20awaits%20your%20input.]) or use an online tool (I used the one at the following link: [https://replit.com/])
+In order to execute the Haskell programs you can install Haskell on your machine or use an online tool (I used Replit).
+
+## Install Haskell (Linux system)
+Follow these steps:
+  1. set up Haskell environment: go to the official website and select your distribution, you will get a page showing the command to install Haskell
+  2. open your terminal and write the command (example with Ubuntu) ```console sudo apt-get install haskell-platform```
+  3. launch the ghci command; once you get the Prelude prompt you are ready to use Haskell ```console ghci```
 
 ## Using Replit
 Follow these steps:
@@ -12,7 +18,7 @@ Follow these steps:
   :l filename.hs
   ```
   3. write the name of the function you want to execute
-  ```ghci
+  ```console
   function param1 param2
   ```
 
