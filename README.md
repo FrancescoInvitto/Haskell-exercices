@@ -15,7 +15,7 @@ Follow these steps:
   ```console
   ghci
   ```
-  4. compile you code
+  4. compile your code
   ```console
   ghc -o filename filename.hs
   ```
