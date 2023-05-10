@@ -68,12 +68,17 @@ readMatrixSize = do
   w <- getLine
   putStrLn "Insert the height of the matrix: "
   h <- getLine
-  let (width, height) = (read w :: Int, read h :: Int)
-  if width <= 0 || height <= 0
-  then do
-    putStrLn "Size not acceptable!"
-    readMatrixSize
-  else return (width, height)
+  if not (null w) && not (null h)
+    then do
+      let (width, height) = (read w :: Int, read h :: Int)
+      if width <= 0 || height <= 0
+        then do
+          putStrLn "Size not acceptable!"
+          readMatrixSize
+        else return (width, height)
+    else do
+      putStrLn "Please insert the width and the height of the matrix"
+      readMatrixSize
 
 -- reads the number of initial random moves that have to be performed (at least 1 and at most the size of the matrix)
 readNumberOfMoves :: Int -> IO Int
@@ -82,10 +87,10 @@ readNumberOfMoves size = do
   m <- getLine
   let moves = read m :: Int
   if moves <= 0 || moves > size
-  then do
-    putStrLn "Number of moves not acceptable!"
-    readNumberOfMoves size
-  else return moves
+    then do
+      putStrLn "Number of moves not acceptable!"
+      readNumberOfMoves size
+    else return moves
 
 -- generates a certain amount of distinct random moves
 generateCasualMoves :: Rng32 -> Int -> Int -> [Int] -> IO [Int]
@@ -110,25 +115,28 @@ playGame (w, h) matrix moves = do
     then do
       putStrLn ("\nCongratulations, you have solved the game in " ++ show moves ++ " moves!")
     else do
-      putStrLn "\nInsert an index: "
+      putStrLn "\nInsert an index (-1 to exit): "
       i <- getLine
       let index = read i :: Int
-      if index < 0 || index >= (w * h)
-        then do
-          putStrLn "Index not valid!"
-          playGame (w, h) matrix moves
+      if index == -1
+        then putStrLn ("Game exited. Moves played: " ++ show moves)
         else do
-          let newMat = cleanUp (w, h) matrix index
-          printMatrix (w, h) newMat
-          playGame (w, h) newMat (moves + 1)
+          if index < 0 || index >= (w * h)
+            then do
+              putStrLn "Index not valid!"
+              playGame (w, h) matrix moves
+            else do
+              let newMat = cleanUp (w, h) matrix index
+              printMatrix (w, h) newMat
+              playGame (w, h) newMat (moves + 1)
 
 cleanUpGame = do
   (width, height) <- readMatrixSize
 
   let matrix = replicate (width * height) False
-  
+
   let moves = readNumberOfMoves (width * height)
-  
+
   let gen = getRng32
   g <- gen
   m <- moves
